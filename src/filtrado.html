@@ -8,8 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"> 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
-  </head>
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">  
+</head>
   <body>
 
     
@@ -25,48 +27,51 @@
 
       <div id="menu"> 
         <ul>
-            <li id="item"> <a href="#">Status</a>
+            <li id="item"><button id="showall"><a href=""> ShowAll </a></button></li>
+            <li id="item"><a href="#">Status</a>
               <ul id="desple"> 
                 <li><button><a href="#">Alive</a></button></li>
                 <li><button><a href="#">Dead</a></button></li>
               </ul>
             </li>
-            <li id="item"> <a href="#">gender</a>
+            <li id="item"> <a href="#"> Gender </a>
               <ul id="desple"> 
-                <li><button><a href="#">Male</a></button></li>
-                <li><button><a href="#">Female</a></button></li>
-                <li><button><a href="#">Unknown</a></button></li>
+                <li><button id="MaleOption" ><a href="#">Male</a></button></li>
+                <li><button id="femaleOption" ><a href="#">Female</a></button></li>
+                <li><button id="unknownOption" ><a href="#">Unknown</a></button></li>
               </ul>
             </li>
-            <li id="item"> <a href="#">specie</a>
+            <li id="item"> <a href="#"> Specie </a>
               <ul id="desple"> 
-                <li><button><a href="#">Human</a></button></li>
-                <li><button><a href="#">Alien</a></button></li>
-                <li><button><a href="#">Humanoid</a></button></li>
-                <li><button><a href="#">Unknow</a></button></li>
-                <li><button><a href="#">Mythology</a></button></li>
-                <li><button><a href="#">Animal</a></button></li>
-                <li><button><a href="#">Vampire</a></button></li>
-                <li><button><a href="#">Robot</a></button></li>
-                <li><button><a href="#">Cronenberg</a></button></li>
-                <li><button><a href="#">Disease</a></button></li>
-                <li><button><a href="#">Parasite</a></button></li>
+                <li><button" id="humanOption"><a href="#">Human</a></button></li>
+                <li><button id="alienOption"><a href="#">Alien</a></button></li>
+                <li><button id="humanoidOption"><a href="#">Humanoid</a></button></li>
+                <li><button id="unknowOption" ><a href="#">Unknow</a></button></li>
+                <li><button id="mythologyOption" ><a href="#">Mythology</a></button></li>
+                <li><button id="animalOption" ><a href="#">Animal</a></button></li>
+                <li><button id="vampireOption" ><a href="#">Vampire</a></button></li>
+                <li><button id="robotOption" ><a href="#">Robot</a></button></li>
+                <li><button id="cronenbergOption" ><a href="#">Cronenberg</a></button></li>
+                <li><button id="diseasseOption" ><a href="#">Disease</a></button></li>
+                <li><button id="parasiteOption" ><a href="#">Parasite</a></button></li>
               </ul>
             </li>
-            <li id="item"> <a href="#">origin</a></li>
-            <li id="item"> <a href="#">alphabetical</a>
+            <li id="item"> <a href="#"> Alphabetical </a>
               <ul id="desple"> 
-                <li><button><a >A - Z</a></button></li>
-                <li><button><a href="#">Z - A</a></button></li>
+                <li><button class="order"><a href="#">A - Z</a></button></li>
+                <li><button class="order2"><a href="#">Z - A</a></button></li>
               </ul>
             </li>
         </ul>
+      </div>
+      <div id="element">
       </div>
 
     </nav>
     
     <main>
         <div id="container-characters" ></div>
+       
     </main>
 
     <footer class="footer">
@@ -78,3 +83,6 @@
     <script src="data.js" type="module"></script>
   </body>
 </html>
+
+
+
