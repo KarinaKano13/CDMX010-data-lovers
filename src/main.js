@@ -34,7 +34,6 @@ function createCard(character) {
     `
     return card;
 }
-
 function renderCards() {
 
     characters.forEach( e => html += createCard(e)); 
@@ -56,7 +55,40 @@ function renderCards() {
     renderCards();
     //ESTA PARTE ES LA DEL FILTRADO:
     //filtrado por gender Female .....
+let botonAlive = document.getElementById("alive");
 
+    botonAlive.addEventListener('click', function(){
+        let container2 = document.getElementById("container-characters");
+        let html2 = ""
+
+            const aliveFilter = characters.filter(character => character.status === "Alive");
+                aliveFilter.forEach((character) => html2 += createCard(character));
+                container2.innerHTML=html2;
+    }
+    );
+
+let botonDead = document.getElementById("dead");
+
+    botonDead.addEventListener('click', function(){
+        let container2 = document.getElementById("container-characters");
+        let html2 = ""
+
+            const deadFilter = characters.filter(character => character.status === "Dead");
+                deadFilter.forEach((character) => html2 += createCard(character));
+                container2.innerHTML=html2;
+    }
+    );
+
+
+
+    const fiterCharacterGenderFemale=characters.filter(character => character.gender =="Female")
+    const filterCharactersGenderMale = characters.filter(character => character.gender == "Male" )
+    const filterCharactersGenderUnknown = characters.filter(character => character.gender == "unknown" )
+    const filterCharactersSpecies = characters.filter(character => character.species.length)
+    const fiterCharacterAlive=characters.filter(character => character.status =="Alive")
+    const filterCharactersDead = characters.filter(character => character.status == "Dead")
+
+         
 
 
     //this code show all th Data
@@ -303,9 +335,17 @@ function renderCards() {
 
 
 
+        //console.log (fiterCharacterGenderFemale);
+        //console.log (filterCharactersGenderMale);
+        //console.log (filterCharactersGenderUnknown);
+       
+        //console.log (filterCharactersSpecies);
+        //console.log (fiterCharacterAlive);
+        //console.log (filterCharactersDead);
 
 // Función para ordenar Alfabeticamente:
 //
 /*let order = document.getElementsByClassName("order");
+        
 
     order.addEventListener*/
