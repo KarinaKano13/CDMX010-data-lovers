@@ -1,9 +1,8 @@
-
 import data from './data/rickandmorty/rickandmorty.js';
-
-const characters = data.results;
-//console.log(characters.name[0])
-
+let characters = data.results;
+let container = document.getElementById("container-characters");
+let html = "";
+let botonOrder = document.querySelector(".order")
 
 
 function createCard(character) {
@@ -31,51 +30,72 @@ function createCard(character) {
     </div>
       
     `
-    ;
     return card;
 }
-
 function renderCards() {
 
-    let container = document.getElementById('container-characters');
-    let html = '';
-  
-    
     characters.forEach( e => html += createCard(e)); 
-    
-    /*
-        
-    for (let i = 0; i < characters.length; i++) {
-        html += createCard(characters[i])
-    } */
-
     container.innerHTML = html;
 
 }
 
 renderCards();
 //ESTA PARTE ES LA DEL FILTRADO:
-//filtrado por gender Female .....
 
-/*
-let genderFilter=
-*/  
-
-
-    const fiterCharacterGenderFemale=characters.filter(character => character.gender =="Female")
-    const filterCharactersGenderMale = characters.filter(character => character.gender == "Male" )
-    const filterCharactersGenderUnknown = characters.filter(character => character.gender == "unknown" )
-    const filterCharactersSpecies = characters.filter(character => character.species.length)
-
-
+    //this code show all th Data
+    let showAll = document.getElementById("showall");
         
-        console.log (fiterCharacterGenderFemale);
-        console.log (filterCharactersGenderMale);
-        console.log (filterCharactersGenderUnknown);
-       
-        console.log (filterCharactersSpecies);
+    showAll.addEventListener("click",function(){
+        renderCards()
 
-    
+    });
+
+
+    import {botonesObj} from "./botObj.js";
+
+    function filtrarRenderizar(objetStatus){
+        objetStatus.forEach(boton=>{
+            let botonId= document.getElementById(boton.id);
+            //console.log('********');
+            //console.log(boton,botonId);
+        
+            botonId.addEventListener('click', ()=>{
+                //console.log('CLICK');
+                let container2 = document.getElementById("container-characters");
+                let html2 = ""
+                //console.log( boton.status);
+                
+                //let statusFilter = characters.filter(character =>character[boton.type] == boton.status)
+                 let statusFilter = characters.filter(character =>{
+
+                     switch (boton.type) {
+
+                     case 'status':
+                            
+                     return character.status == boton.status
+
+                     case 'gender':
+                            
+                     return character.gender == boton.status
+
+                     case 'species':
+                            
+                     return character.species == boton.status
+
+                    }
+                    
+                 });
+  
+
+                //console.log(statusFilter);
+                    statusFilter.forEach((character) => html2 += createCard(character));
+                    container2.innerHTML=html2;
+            }
+            );
+        })
+
+    }
+    filtrarRenderizar(botonesObj);
 
 
 

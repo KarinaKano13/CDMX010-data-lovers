@@ -1,11 +1,13 @@
 /* --- Page style --- */
 body { 
+  
     background: url("assets/fondoRickAndMortyPaginaInicio.png");
     background-size: 100%;
     background-color: black;
   }
 
   .box{
+
     width: 600px;
     padding: 40px;
     position: absolute;
@@ -16,6 +18,7 @@ body {
   }
 
   .bton{
+
     display: block;
     width: 100px;
     height: 15px;
@@ -36,8 +39,23 @@ body {
     border-color: black;
   
   }
+
+  #element p{
+    
+    width: 200px;
+    margin-bottom: 0%;
+    margin-top: 0px;
+    color: rgb(255, 255, 255);
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    font-weight: bolder;
+    text-justify: newspaper;
+    margin-right: 10px;
+
+  }
   /*---Filtrado.html style start here---*/
   .boxrm {
+
     height: 120px;
     margin: 20px;
     padding-bottom: 20px;
@@ -48,22 +66,26 @@ body {
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 2rem;
     margin-left: 2rem;
 
   }
 
   #menu ul{
+
       list-style: none;
       margin:0;
       padding:0;
   }
 
   #menu #item{
+
       float:left;
   }
 
   #menu #item a{
+
       background: rgb(70, 190, 164);
       color: white;
       padding: 12px 22px;
@@ -74,6 +96,7 @@ body {
   }
   
   #menu #desple{
+
     display: none;
     position: absolute;
     min-width: 100px;
@@ -81,10 +104,12 @@ body {
 
 
 #menu #item a:hover{
+
     background:rgb(26, 78, 67)
 }
 
 button{
+
   background: rgb(70, 190, 164);
   color: white;
   font-family: 'Orbitron', sans-serif;
@@ -97,10 +122,11 @@ button:hover {
 
 
 #menu #item:hover #desple{
+
     display: block;
 }
 
-/*---lugar donde se mostrará la data---*/
+/*---Place where the Data is going to be show.--*/
 #container-characters {
 
   display: flex;
@@ -127,7 +153,7 @@ button:hover {
 
 .card:hover{
 
-  filter: drop-shadow(0 5px 5px rgb(21, 255, 0));
+  filter: drop-shadow(0 5px 25px rgb(21, 255, 0));
 
 }
 
@@ -161,7 +187,6 @@ button:hover {
 }
 
 .name{/*this code gives formats the Name Character */
-
     
     font-family:'Schoolbell';
     color:  rgba(39, 119, 138, 1);
