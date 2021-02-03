@@ -42,14 +42,17 @@ body {
 
   #element p{
     
-    width: 200px;
+    width: 300px;
     margin-bottom: 0%;
+    background-color:rgb(34, 143, 143);
+    
     margin-top: 0px;
+    margin-left: 50px;
     color: rgb(255, 255, 255);
     font-family: 'Nanum Pen Script', cursive;
     font-size: 2rem;
-    font-weight: bolder;
-    text-justify: newspaper;
+    font-weight:lighter;
+    text-justify:distribute-all-lines;
     margin-right: 10px;
 
   }
@@ -62,7 +65,7 @@ body {
   }
 /*---Drop-down menu start here---*/
 
-  nav{
+  nav {
 
     display: flex;
     flex-wrap: wrap;
@@ -72,20 +75,17 @@ body {
 
   }
 
-  #menu ul{
+  #menu {
 
       list-style: none;
       margin:0;
       padding:0;
   }
 
-  #menu #item{
+  
 
+  #menu #item {
       float:left;
-  }
-
-  #menu #item a{
-
       background: rgb(70, 190, 164);
       color: white;
       padding: 12px 22px;
@@ -100,12 +100,21 @@ body {
     display: none;
     position: absolute;
     min-width: 100px;
+   
+
 }
 
+#menu #item>button{
 
-#menu #item a:hover{
+  padding: 12PX 22PX;
 
-    background:rgb(26, 78, 67)
+}
+
+#menu #item button:hover{
+
+    background:rgb(26, 78, 67);
+    text-decoration: none;
+
 }
 
 button{
@@ -114,21 +123,35 @@ button{
   color: white;
   font-family: 'Orbitron', sans-serif;
   text-decoration: none;
+  padding: 12px 22px;
+  font-size: 16px;
+
 }
 
 button:hover {
-  background:rgb(26, 78, 67)
+  
+  background:rgb(26, 78, 67);
+  float:left;
+  background: rgb(70, 190, 164);
+  color: white;
+  padding: 12px 22px;
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  
 }
 
 
 #menu #item:hover #desple{
-
-    display: block;
+    
+  display: block;
+  
 }
 
 /*---Place where the Data is going to be show.--*/
 #container-characters {
-
+  
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

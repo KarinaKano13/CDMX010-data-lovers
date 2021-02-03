@@ -1,12 +1,21 @@
 
 import data from './data/rickandmorty/rickandmorty.js';
-let characters = data.results;
-let container = document.getElementById("container-characters");
-let html = "";
-let botonOrder = document.querySelector(".order")
+import { filterGender, filterStatus } from './data.js'
 
-//console.log(characters.name[0])
+export let characters = data.results;
+export let container = document.getElementById("container-characters");
+export let html = "";
 
+let botonOrder = document.querySelector(".orderAZ");
+let botonOrder2 = document.querySelector(".orderZA");
+
+//VARIABLES DE MIS BOTONES DE FILTRADO
+const genderButtons = document.querySelectorAll('.genderButton');
+const statusButtons = document.querySelectorAll('.statusButton');
+const speciesButtons = document.querySelectorAll('.specieButton');
+
+console.log('buttons', statusButtons);
+//TEMPLATE LITERALS
 function createCard(character) {
 
     const card =
@@ -33,319 +42,79 @@ function createCard(character) {
       
     `
     return card;
-}
-function renderCards() {
+};
 
+
+//MOSTRANDO DATA:
+function renderCards() {
     characters.forEach( e => html += createCard(e)); 
     container.innerHTML = html;
+};
+renderCards()
+//console.log(characters.name[0])
 
-}
-
-/*
-    botonOrder.addEventListener("click",function(){
-
-        console.log("probando")
-        console.log(html.name);
-
-    }
-
-    )
-*/
-
-    renderCards();
-    //ESTA PARTE ES LA DEL FILTRADO:
-    //filtrado por gender Female .....
-let botonAlive = document.getElementById("alive");
-
-    botonAlive.addEventListener('click', function(){
-        let container2 = document.getElementById("container-characters");
-        let html2 = ""
-
-            const aliveFilter = characters.filter(character => character.status === "Alive");
-                aliveFilter.forEach((character) => html2 += createCard(character));
-                container2.innerHTML=html2;
-    }
-    );
-
-let botonDead = document.getElementById("dead");
-
-    botonDead.addEventListener('click', function(){
-        let container2 = document.getElementById("container-characters");
-        let html2 = ""
-
-            const deadFilter = characters.filter(character => character.status === "Dead");
-                deadFilter.forEach((character) => html2 += createCard(character));
-                container2.innerHTML=html2;
-    }
-    );
+statusButtons.forEach(function (button) {
+    button.addEventListener('click', function() {
+        filterStatus(button.id)
+    });
+})
 
 
+genderButtons.forEach(function (button) {
+    button.addEventListener('click', function(event) {
+        const value = event.target.dataset.gender
+        console.log("value", value, event.target.dataset)
+        filterGender(value)
+    })
+})
 
-    const fiterCharacterGenderFemale=characters.filter(character => character.gender =="Female")
-    const filterCharactersGenderMale = characters.filter(character => character.gender == "Male" )
-    const filterCharactersGenderUnknown = characters.filter(character => character.gender == "unknown" )
-    const filterCharactersSpecies = characters.filter(character => character.species.length)
-    const fiterCharacterAlive=characters.filter(character => character.status =="Alive")
-    const filterCharactersDead = characters.filter(character => character.status == "Dead")
+speciesButtons.forEach(function (button) {
+    button.addEventListener('click', function(event) {
+        const value = event.target.dataset.specie
+        filterSpecies(value)
+    })
+})
 
-         
-
+   
+       
+ 
 
     //this code show all th Data
-    let showAll = document.getElementById("showall");
-        
+    /*let showAll = document.querySelector("#showall");      
     showAll.addEventListener("click",function(){
         renderCards()
-
-    });
-
-    //This Code filter by gender
-
-    const botonFemmale = document.getElementById("femaleOption");
-        
-        botonFemmale.addEventListener('click', function(){
-
-            let container = document.getElementById("container-characters");
-            let html = ""
-             
-
-            const filter = characters.filter(character => character.gender === "Female");
-                    
-                filter.forEach((character) => html += createCard(character));
-
-            container.innerHTML=html;
-                       
-        }
-    );
-
-    let botonMale = document.getElementById("MaleOption");
-        
-        botonMale.addEventListener('click', function(){
-
-            let container = document.getElementById("container-characters");
-            let html = ""
-            
-
-
-            const filter = characters.filter(character => character.gender === "Male");
-            filter.forEach((character) => html += createCard(character)); 
-
-            container.innerHTML=html; 
-            
-            /*
-            const results = genderFilter.length; 
-            let element = document.createElement("p")
-            element.textContent = `${results} characters in this category`
-            const nav = document.querySelector("#element");
-            nav.appendChild(element);
-            
-            console.log(genderFilter.length)*/
-                    
-        }
-    );
-
-    let botonUnnknown = document.getElementById("unknownOption");
-        
-        botonUnnknown.addEventListener('click', function(){
-
-            let container = document.getElementById("container-characters");
-            let html = ""
+    }); */
     
-            const genderFilter = characters.filter(character => character.gender === "unknown");
-                
-                genderFilter.forEach((character) => html += createCard(character));
-
-            container.innerHTML=html;
-                    
+botonOrder.addEventListener("click",function(){
+   
+        const orderAZ =characters.sort(function(a,b){
+        html="";
+        
+        if(a.name > b.name){
+            return 1;
         }
-    );
+        if(a.name < b.name){
+            return -1;
+        }
+        return 0
+    });
+orderAZ.forEach((e)=> html+= createCard(e))
+document.querySelector("#container-characters").innerHTML=html
+});  
 
-//This Code filter by Species
-
-    let botonHumanSpecies = document.getElementById("humanOption");
-    
-    botonHumanSpecies.addEventListener('click', function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
+botonOrder2.addEventListener("click",function(){
+   
+        const orderZA =characters.sort(function(a,b){
+        html="";
         
-        const speciesFilter = characters.filter(character => character.species === "Human");
-            
-            speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;   
-        
-        
+        if(a.name < b.name){
+            return 1;
+        }
+        if(a.name > b.name){
+            return -1;
+        }
+        return 0
     });
-    let botonalienOption = document.querySelector('#alienOption');
-
-    botonalienOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Alien")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botonhumanoidOption = document.querySelector('#humanoidOption');
-
-    botonhumanoidOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Humanoid")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botonunknowOption = document.querySelector('#unknowOption');
-
-    botonunknowOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "unknown")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botonmythologyOption = document.querySelector('#mythologyOption');
-
-    botonmythologyOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Mytholog")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botonanimalOption = document.querySelector('#animalOption');
-
-    botonanimalOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Animal")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botonvampireOption = document.querySelector('#vampireOption');
-
-    botonvampireOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Vampire")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botonrobotOption = document.querySelector('#robotOption');
-
-    botonrobotOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Robot")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botoncronenbergOption = document.querySelector('#cronenbergOption');
-
-    botoncronenbergOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Cronenberg")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botondiseasseOption = document.querySelector('#diseasseOption');
-
-    botondiseasseOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Disease")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    let botonparasiteOption = document.querySelector('#parasiteOption');
-
-    botonparasiteOption.addEventListener('click',function(){
-
-        let container = document.getElementById("container-characters");
-        let html = ""
-
-        const speciesFilter = characters.filter((character) => character.species === "Parasite")
-        speciesFilter.forEach((character) => html += createCard(character));
-
-        container.innerHTML=html;
-
-    });
-
-    /*
-    function getOrigins(characters) {
-        const origins = characters.map((character) => {
-            return character.origin.name
-        }); // ['earth', 'marte', ...]
-
-        const originSet = new Set(origins);
-
-        return  Array.from(originSet);
-       
-    };
-
-    getOrigins()
-    */
-
-
-
-
-        //console.log (fiterCharacterGenderFemale);
-        //console.log (filterCharactersGenderMale);
-        //console.log (filterCharactersGenderUnknown);
-       
-        //console.log (filterCharactersSpecies);
-        //console.log (fiterCharacterAlive);
-        //console.log (filterCharactersDead);
-
-// Función para ordenar Alfabeticamente:
-//
-/*let order = document.getElementsByClassName("order");
-        
-
-    order.addEventListener*/
+    orderZA.forEach((e)=> html+= createCard(e))
+    document.querySelector("#container-characters").innerHTML=html
+});
