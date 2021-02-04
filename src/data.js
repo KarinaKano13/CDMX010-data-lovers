@@ -39,8 +39,6 @@ export const filtrarBuscador = () =>{
     }
 }
     
-
-    
     //filtrado por nombre
 
 export function filtrarRenderizar(objetStatus){
