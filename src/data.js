@@ -1,26 +1,21 @@
 import data from './data/rickandmorty/rickandmorty.js';
-let characters = data.results;
-let characterName = characters.name;
-console.log(characters.name)
-
+import { characters, createCard, formulario, resultadoNom} from './main.js'
 
     //filttrado por nombre
-const formulario = document.querySelector("#buscador");
-const boton = document.querySelector("#botonBusqueda");
-const resultadoNom = document.querySelector("#container-characters")
 
-const filtrarBuscador = () =>{
+
+export const filtrarBuscador = () =>{
 
     resultadoNom.innerHTML="";
 
    const texto = formulario.value.toLowerCase();
     
    for (let character of characters){
-       console.log(character);
-
+       
         let nombre = character.name.toLowerCase();
         if(nombre.indexOf(texto) !== -1){
-            resultadoNom.innerHTML +=`
+            resultadoNom.innerHTML +=
+            `
             <div class="card">
                 <div>
                     <img class="characterImage" src=${character.image}></img>
@@ -44,6 +39,49 @@ const filtrarBuscador = () =>{
     }
 }
     
-boton.addEventListener('click', filtrarBuscador)
+
     
     //filtrado por nombre
+
+export function filtrarRenderizar(objetStatus){
+        objetStatus.forEach(boton=>{
+            let botonId= document.getElementById(boton.id);
+            //console.log('********');
+            //console.log(boton,botonId);
+        
+            botonId.addEventListener('click', ()=>{
+                //console.log('CLICK');
+                let container2 = document.getElementById("container-characters");
+                let html2 = ""
+                //console.log( boton.status);
+                
+                //let statusFilter = characters.filter(character =>character[boton.type] == boton.status)
+                 let statusFilter = characters.filter(character =>{
+
+                     switch (boton.type) {
+
+                     case 'status':
+                            
+                     return character.status == boton.status
+
+                     case 'gender':
+                            
+                     return character.gender == boton.status
+
+                     case 'species':
+                            
+                     return character.species == boton.status
+
+                    }
+                    
+                 });
+  
+
+                //console.log(statusFilter);
+                    statusFilter.forEach((character) => html2 += createCard(character));
+                    container2.innerHTML=html2;
+            }
+            );
+        })
+
+    }

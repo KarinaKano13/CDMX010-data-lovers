@@ -1,21 +1,28 @@
 import data from './data/rickandmorty/rickandmorty.js';
-let characters = data.results;
+import {filtrarRenderizar, filtrarBuscador} from "./data.js"
+import {botonesObj} from "./botObj.js";
+
+export let characters = data.results; 
 let container = document.getElementById("container-characters");
 let html = "";
-let botonOrder = document.querySelector(".order")
+let showAll = document.getElementById("showall");
+
+export const boton = document.querySelector("#botonBusqueda");
+export const formulario = document.querySelector("#buscador");
+export const resultadoNom = document.querySelector("#container-characters")
+
+const botonOrderAZ = document.querySelector('.order');
+const botonOrderZA = document.querySelector('.order2');
 
 
-function createCard(character) {
+export function createCard(character) {
 
     const card =
-    
     `
     <div class="card">
-
         <div>
             <img class="characterImage" src=${character.image}></img>
         </div>
-
         <div class="status">
             <P>STATUS:</P><P>${character.status}</P>
         </div>
@@ -43,7 +50,7 @@ renderCards();
 //ESTA PARTE ES LA DEL FILTRADO:
 
     //this code show all th Data
-    let showAll = document.getElementById("showall");
+    
         
     showAll.addEventListener("click",function(){
         renderCards()
@@ -51,51 +58,42 @@ renderCards();
     });
 
 
-    import {botonesObj} from "./botObj.js";
+    boton.addEventListener('click', filtrarBuscador)
 
-    function filtrarRenderizar(objetStatus){
-        objetStatus.forEach(boton=>{
-            let botonId= document.getElementById(boton.id);
-            //console.log('********');
-            //console.log(boton,botonId);
-        
-            botonId.addEventListener('click', ()=>{
-                //console.log('CLICK');
-                let container2 = document.getElementById("container-characters");
-                let html2 = ""
-                //console.log( boton.status);
-                
-                //let statusFilter = characters.filter(character =>character[boton.type] == boton.status)
-                 let statusFilter = characters.filter(character =>{
-
-                     switch (boton.type) {
-
-                     case 'status':
-                            
-                     return character.status == boton.status
-
-                     case 'gender':
-                            
-                     return character.gender == boton.status
-
-                     case 'species':
-                            
-                     return character.species == boton.status
-
-                    }
-                    
-                 });
-  
-
-                //console.log(statusFilter);
-                    statusFilter.forEach((character) => html2 += createCard(character));
-                    container2.innerHTML=html2;
-            }
-            );
-        })
-
-    }
+    //This code make the filter
     filtrarRenderizar(botonesObj);
 
 
+botonOrderAZ.addEventListener("click",function(){
+   
+        const orderAZ =characters.sort(function(a,b){
+        html="";
+        
+        if(a.name > b.name){
+            return 1;
+        }
+        if(a.name < b.name){
+            return -1;
+        }
+        return 0
+    });
+orderAZ.forEach((e)=> html+= createCard(e))
+document.querySelector("#container-characters").innerHTML=html
+});  
 
+botonOrderZA.addEventListener("click",function(){
+   
+        const orderZA =characters.sort(function(a,b){
+        html="";
+        
+        if(a.name < b.name){
+            return 1;
+        }
+        if(a.name > b.name){
+            return -1;
+        }
+        return 0
+    });
+    orderZA.forEach((e)=> html+= createCard(e))
+    document.querySelector("#container-characters").innerHTML=html
+});

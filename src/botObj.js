@@ -43,12 +43,12 @@ export const botonesObj=[
     },
     {
         id:'unknowOption',
-        status:'Unknow',
+        status:'unknown',
         type:'species'
     },
     {
         id:'mythologyOption',
-        status:'Mythology',
+        status:'Mytholog',
         type:'species'
     },
     {
