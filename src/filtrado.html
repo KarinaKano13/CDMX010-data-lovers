@@ -24,54 +24,61 @@
     </header>
     
     <nav>
-
+    
+     
       <div id="menu"> 
-        <ul>
-            <li id="item"><button id="showall"> Restart </button></li>
-            <li id="item"> Status 
+        <ul><div id="menu2">
+              <li id="item"><button id="showall"><a href=""> ShowAll </a></button></li>
+           </div>
+            <li id="item"><a href="#">Status</a>
               <ul id="desple"> 
-                <li><button id="Alive" data-status="Alive" class="statusButton"> Alive </button></li>
-                <li><button id="Dead" data-status="Dead" class="statusButton"> Dead </button></li>
+                <li><button id="alive"><a href="#">Alive</a></button></li>
+                <li><button id="dead"><a href="#">Dead</a></button></li>
               </ul>
             </li>
-            <li id="item">Gender
+            <li id="item"> <a href="#"> Gender </a>
               <ul id="desple"> 
-                <li><button id="Male" data-gender="Male" class="genderButton"> Male </button></li>
-                <li><button id="Female" data-gender ="Female" class="genderButton"> Female </button></li>
-                <li><button id="unknown-gender" data-gender="unknown" class="genderButton"> Unknown </button></li>
+                <li><button id="MaleOption" ><a href="#">Male</a></button></li>
+                <li><button id="femaleOption" ><a href="#">Female</a></button></li>
+                <li><button id="unknownOption" ><a href="#">Unknown</a></button></li>
               </ul>
             </li>
-            <li id="item" class= "Alive"> Specie 
+            <li id="item"> <a href="#"> Specie </a>
               <ul id="desple"> 
-                <li><button id="Human" data-specie="Human" class="specieButton"> Human </button></li>
-                <li><button id="Alien" data-specie="Alien" class="specieButton"> Alien </button></li>
-                <li><button id="Humanoid" data-specie="Humanoid" class="specieButton"> Humanoid </button></li>
-                <li><button id="unknown-species" data-specie="unknown" class="specieButton"> Unknow </button></li>
-                <li><button id="Mytholog" data-specie="Mytholog" class="specieButton"> Mythology </button></li>
-                <li><button id="Animal" data-specie="Animal" class="specieButton"> Animal </button></li>
-                <li><button id="Vampire" data-specie="Vampire" class="specieButton"> Vampire </button></li>
-                <li><button id="Robot" data-specie="Robot" class="specieButton"> Robot </button></li>
-                <li><button id="Cronenberg" data-specie="Cronenberg" class="specieButton"> Cronenberg </button></li>
-                <li><button id="Disease" data-specie="Disease" class="specieButton"> Disease </button></li>
-                <li><button id="Parasite" data-specie="Parasite" class="specieButton"> Parasite </button></li>
-                <li><button id="Parasite" data-specie="Poopybutthole" class="specieButton"> Poopybutthole</button></li>
+                <li><button" id="humanOption"><a href="#">Human</a></button></li>
+                <li><button id="alienOption"><a href="#">Alien</a></button></li>
+                <li><button id="humanoidOption"><a href="#">Humanoid</a></button></li>
+                <li><button id="unknowOption" ><a href="#">Unknow</a></button></li>
+                <li><button id="mythologyOption" ><a href="#">Mythology</a></button></li>
+                <li><button id="animalOption" ><a href="#">Animal</a></button></li>
+                <li><button id="vampireOption" ><a href="#">Vampire</a></button></li>
+                <li><button id="robotOption" ><a href="#">Robot</a></button></li>
+                <li><button id="cronenbergOption" ><a href="#">Cronenberg</a></button></li>
+                <li><button id="diseasseOption" ><a href="#">Disease</a></button></li>
+                <li><button id="parasiteOption" ><a href="#">Parasite</a></button></li>
               </ul>
             </li>
-            <li id="item"> Alphabetical 
+            <div id="alphabetical">
+            <li id="item"> <a href="#"> Alphabetical </a>
               <ul id="desple"> 
-                <li><button class="orderAZ"> A - Z </button></li>
-                <li><button class="orderZA"> Z - A </button></li>
+                <li><button class="order"><a href="#">A - Z</a></button></li>
+                <li><button class="order2"><a href="#">Z - A</a></button></li>
               </ul>
             </li>
+          </div>
         </ul>
       </div>
+      <div id="buscadorName">
+        <input type="text" id="buscador" class="form-control my-2">
+        <button class="btn btn-info mb-2" id="botonBusqueda">Buscar</button>
+     </div> 
       <div id="element">
       </div>
 
     </nav>
     
     <main>
-        <div id='container-characters'></div>
+        <div id="container-characters" ></div>
        
     </main>
 
@@ -84,6 +91,3 @@
     <script src="data.js" type="module"></script>
   </body>
 </html>
-
-
-

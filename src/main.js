@@ -2,17 +2,19 @@ import data from './data/rickandmorty/rickandmorty.js';
 import {filtrarRenderizar, filtrarBuscador} from "./data.js"
 import {botonesObj} from "./botObj.js";
 
-export let characters = data.results; 
+// 
 let container = document.getElementById("container-characters");
 let html = "";
 let showAll = document.getElementById("showall");
+const botonOrderAZ = document.querySelector('.order');
+const botonOrderZA = document.querySelector('.order2');
 
+export let characters = data.results; 
 export const boton = document.querySelector("#botonBusqueda");
 export const formulario = document.querySelector("#buscador");
 export const resultadoNom = document.querySelector("#container-characters")
 
-const botonOrderAZ = document.querySelector('.order');
-const botonOrderZA = document.querySelector('.order2');
+
 
 
 export function createCard(character) {
@@ -39,6 +41,7 @@ export function createCard(character) {
     `
     return card;
 }
+
 function renderCards() {
 
     characters.forEach( e => html += createCard(e)); 
@@ -50,18 +53,17 @@ renderCards();
 //ESTA PARTE ES LA DEL FILTRADO:
 
     //this code show all th Data
-    
         
-    showAll.addEventListener("click",function(){
+showAll.addEventListener("click",function(){
         renderCards()
+});
 
-    });
+
+boton.addEventListener('click', filtrarBuscador)
 
 
-    boton.addEventListener('click', filtrarBuscador)
-
-    //This code make the filter
-    filtrarRenderizar(botonesObj);
+//This code make the filter
+filtrarRenderizar(botonesObj);
 
 
 botonOrderAZ.addEventListener("click",function(){

@@ -61,16 +61,23 @@ body {
     padding-bottom: 20px;
   }
 /*---Drop-down menu start here---*/
+  nav>#showall{
+
+    justify-content: right;
+
+  }
 
   nav{
 
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content:center;
     margin-bottom: 2rem;
     margin-left: 2rem;
 
   }
+  
 
   #menu ul{
 
@@ -126,6 +133,40 @@ button:hover {
     display: block;
 }
 
+@media all and (max-width: 650px){
+
+  #menu{
+    width: 200px;
+    margin-right: 180px;
+  }
+  #menu #item a{
+    padding: 9px 14px;
+    margin: 5px;
+  }
+  nav{
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+
+  }
+  
+  #buscadorName{
+
+    margin-top: 50px;
+
+  
+  }
+
+} 
+#buscadorName{
+    display: flex;
+    flex-wrap: wrap;
+ 
+ 
+
+}
+
+
 /*---Place where the Data is going to be show.--*/
 #container-characters {
 
@@ -134,6 +175,8 @@ button:hover {
   justify-content: space-around;
   
 }
+
+
 
 /*Credential styles start here*/
 
