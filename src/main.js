@@ -2,7 +2,7 @@ import data from './data/rickandmorty/rickandmorty.js';
 import {filtrarRenderizar, filtrarBuscador} from "./data.js"
 import {botonesObj} from "./botObj.js";
 
-// 
+
 let container = document.getElementById("container-characters");
 let html = "";
 let showAll = document.getElementById("showall");
@@ -50,10 +50,7 @@ function renderCards() {
 }
 
 renderCards();
-//ESTA PARTE ES LA DEL FILTRADO:
 
-    //this code show all th Data
-        
 showAll.addEventListener("click",function(){
         renderCards()
 });
@@ -62,7 +59,6 @@ showAll.addEventListener("click",function(){
 boton.addEventListener('click', filtrarBuscador)
 
 
-//This code make the filter
 filtrarRenderizar(botonesObj);
 
 
@@ -79,9 +75,11 @@ botonOrderAZ.addEventListener("click",function(){
         }
         return 0
     });
-orderAZ.forEach((e)=> html+= createCard(e))
-document.querySelector("#container-characters").innerHTML=html
-});  
+    
+    orderAZ.forEach((e)=> html+= createCard(e))
+    document.querySelector("#container-characters").innerHTML=html
+    });  
+
 
 botonOrderZA.addEventListener("click",function(){
    
